@@ -1,7 +1,7 @@
 import multer from "multer";
 import fs from "fs";
 
-const UPLOAD_DIRECTORY = "uploadsAvatar/";
+const UPLOAD_DIRECTORY = "uploadsImage/";
 
 if (!fs.existsSync(UPLOAD_DIRECTORY)) {
   fs.mkdirSync(UPLOAD_DIRECTORY);
@@ -21,6 +21,7 @@ const multerStorage = multer.diskStorage({
   },
 });
 
-const uploadFile = multer({ storage: multerStorage });
+const uploadFileImage = multer({ storage: multerStorage });
 
-export default uploadFile;
+export default uploadFileImage;
+  

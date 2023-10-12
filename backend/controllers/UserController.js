@@ -11,7 +11,8 @@ cloudinary.config({
 const uploadAvatar = async (req, res) => {
  try {
   const { id } = req.user
- 
+
+
   //add file
   const file = req.file
   //upload file to cloudinary server
