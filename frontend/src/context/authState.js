@@ -1,60 +1,58 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 
-import AuthContext from './authContext';
-import authAPI from '../api/authAPI';
+// import AuthContext from './authContext';
+// import authAPI from '../api/authAPI';
 
-const AuthState = ({ children }) => {
-  const [auth, setAuth] = useState({
-    isAuthenticated: false,
-    user: {},
-  });
+// const AuthState = ({ children }) => {
+//   const [auth, setAuth] = useState({
+//     isAuthenticated: false,
+//     user: {},
+//   });
 
-  //   1. Call API /me => userInfo
-  //   2. Update auth state
-  const fetchCurrentUser = async () => {
-    try {
-      const response = await authAPI.authInfo();
-      const data = response.data;
+//   const fetchCurrentUser = async () => {
+//     try {
+//       const response = await authAPI.authInfo();
+//       const data = response.data;
 
-      setAuth({
-        isAuthenticated: true,
-        user: data.userInfo,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+//       setAuth({
+//         isAuthenticated: true,
+//         user: data.userInfo,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
-  const handleLogin = async () => {
-    await fetchCurrentUser();
-  };
+//   const handleLogin = async () => {
+//     await fetchCurrentUser();
+//   };
 
-  const handleLogout = () => {
-    setAuth({
-      isAuthenticated: false,
-      user: {},
-    });
-  };
+//   const handleLogout = () => {
+//     setAuth({
+//       isAuthenticated: false,
+//       user: {},
+//     });
+//   };
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      fetchCurrentUser();
-    }
-  }, []);
+//   useEffect(() => {
+//     const accessToken = localStorage.getItem('accessToken');
+//     if (accessToken) {
+//       fetchCurrentUser();
+//     }
+//   }, []);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        auth,
-        handleLogin,
-        handleLogout,
-        fetchCurrentUser,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
+//   return (
+//     <AuthContext.Provider
+//       value={{
+//         auth,
+//         handleLogin,
+//         handleLogout,
+//         fetchCurrentUser,
+//       }}
+//     >
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
 
-export default AuthState;
+// export default AuthState;
