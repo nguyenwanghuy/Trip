@@ -42,10 +42,34 @@ fs.unlinkSync(file.path)
   res.status(500).send(error)
  }
 }
+// get by id
+const getUser = async (req, res) => {
+  try {
+    const {id} = req.params
+    const user = await UserModel.findById(id)
+    res.status(200).json({
+      data: user,
+      message: 'User here'
+    })
+  } catch (error) {
+    res.status(500).send({message: error.message})
+  }
+};
 
-
+// get user friends
+const getUserFriends = async (req, res) => {
+  try {
+    const {id} = req.params
+    const user = await UserModel.findById(id);
+    
+  } catch (error) {
+    res.status(500).send({message: error.message})
+  }
+};
 const UserCtrl = {
-  uploadAvatar
+  uploadAvatar,
+  getUser,
+  getUserFriends
 }
 
 export default UserCtrl;
